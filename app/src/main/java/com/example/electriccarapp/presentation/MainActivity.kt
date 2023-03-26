@@ -1,11 +1,12 @@
-package com.example.electriccarapp
+package com.example.electriccarapp.presentation
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.electriccarapp.R
 
 class MainActivity : AppCompatActivity() {
     lateinit var preco: EditText
@@ -20,20 +21,21 @@ class MainActivity : AppCompatActivity() {
         setupListeners()
     }
 
-    fun setupView() {
-        preco = findViewById(R.id.et_preco_kwh)
-        kmPercorrido = findViewById(R.id.et_km_percorrido)
+    private fun setupView() {
+//        preco = findViewById(R.id.et_preco_kwh)
+//        kmPercorrido = findViewById(R.id.et_km_percorrido)
         btnCalcular = findViewById(R.id.btn_calcular)
-        resultado = findViewById(R.id.tv_resultado)
+//        resultado = findViewById(R.id.tv_resultado)
     }
 
-    fun setupListeners() {
+    private fun setupListeners() {
         btnCalcular.setOnClickListener {
-            calcular()
+            //calcular()
+            startActivity(Intent(this, CalcularAutonomiaActivity::class.java))
         }
     }
 
-    fun calcular() {
+    private fun calcular() {
         val preco = preco.text.toString().toFloat()
         val km = kmPercorrido.text.toString().toFloat()
         val result = preco / km

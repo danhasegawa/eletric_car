@@ -11,4 +11,9 @@
     <string name="preco_kwh">Preco Kwh</string>
     <string name="km_percorrido">Km Percorrido</string>
     <string name="btn_calcular">Calcular</string>
+    <string name="calcular_autonomia">Calcular Autonomia</string>
+    <string name="image_eletric_car">image_eletric_car</string>
+    <string name="tab_layout_deswcription">tab layout deswcription</string>
+    <string name="carros_fragment">Carros</string>
+    <string name="favoritos_fragment">Favoritos</string>
 </resources>

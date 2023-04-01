@@ -1,37 +1,41 @@
-package com.example.electriccarapp.presentation
+package com.example.electriccarapp.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.electriccarapp.R
 
-class MainActivity : AppCompatActivity() {
-    lateinit var preco: EditText
-    lateinit var kmPercorrido: EditText
-    lateinit var btnCalcular: Button
-    lateinit var resultado: TextView
+class CalcularAutonomiaActivity : AppCompatActivity() {
+    private lateinit var preco: EditText
+    private lateinit var kmPercorrido: EditText
+    private lateinit var resultado: TextView
+    private lateinit var btnCalcular: Button
+    private lateinit var btnClose: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_calcular_autonomia)
         setupView()
         setupListeners()
     }
 
     private fun setupView() {
-//        preco = findViewById(R.id.et_preco_kwh)
-//        kmPercorrido = findViewById(R.id.et_km_percorrido)
+        preco = findViewById(R.id.et_preco_kwh)
+        kmPercorrido = findViewById(R.id.et_km_percorrido)
         btnCalcular = findViewById(R.id.btn_calcular)
-//        resultado = findViewById(R.id.tv_resultado)
+        resultado = findViewById(R.id.tv_resultado)
+        btnClose = findViewById(R.id.iv_close)
     }
 
     private fun setupListeners() {
         btnCalcular.setOnClickListener {
-            //calcular()
-            startActivity(Intent(this, CalcularAutonomiaActivity::class.java))
+            calcular()
+        }
+        btnClose.setOnClickListener {
+            finish()
         }
     }
 

@@ -44,5 +44,8 @@ class CalcularAutonomiaActivity : AppCompatActivity() {
         val km = kmPercorrido.text.toString().toFloat()
         val result = preco / km
         resultado.text = result.toString()
+
     }
+
+
 }

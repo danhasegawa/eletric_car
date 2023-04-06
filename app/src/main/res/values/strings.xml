@@ -16,4 +16,7 @@
     <string name="tab_layout_deswcription">tab layout deswcription</string>
     <string name="carros_fragment">Carros</string>
     <string name="favoritos_fragment">Favoritos</string>
+    <string name="tab_description">abas para navegar entre os carros e favoritos</string>
+    <string name="fab_calcular">Float Button Calcular</string>
+    <string name="no_wifi">Internet nao disponivel</string>
 </resources>

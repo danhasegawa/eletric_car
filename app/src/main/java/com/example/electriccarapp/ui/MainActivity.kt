@@ -1,14 +1,9 @@
 package com.example.electriccarapp.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.electriccarapp.R
-import com.example.electriccarapp.data.CarFactory
-import com.example.electriccarapp.ui.adapter.CarAdapter
 import com.example.electriccarapp.ui.adapter.TabsAdapter
 import com.google.android.material.tabs.TabLayout
 
@@ -29,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.vp_view_pager)
     }
 
-    fun setuptabs() {
+    private fun setuptabs() {
         val tabsAdapter = TabsAdapter(this)
         viewPager.adapter = tabsAdapter
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {

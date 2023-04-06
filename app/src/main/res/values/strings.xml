@@ -19,4 +19,5 @@
     <string name="tab_description">abas para navegar entre os carros e favoritos</string>
     <string name="fab_calcular">Float Button Calcular</string>
     <string name="no_wifi">Internet nao disponivel</string>
+    <string name="response_error">Algo deu errado, por favor tente mais tarde</string>
 </resources>

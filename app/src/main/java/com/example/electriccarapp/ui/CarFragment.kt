@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.electriccarapp.R
 import com.example.electriccarapp.data.CarsApi
+import com.example.electriccarapp.data.local.CarRepository
 import com.example.electriccarapp.domain.Carro
 import com.example.electriccarapp.ui.adapter.CarAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,7 +30,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-@Suppress("DEPRECATION")
 class CarFragment : Fragment() {
 
     private lateinit var fabCalcular: FloatingActionButton
@@ -117,6 +117,9 @@ class CarFragment : Fragment() {
             isVisible = true
             adapter = carroAdapter
         }
+        carroAdapter.carItemLister = { carro ->
+           val isSaved = CarRepository(requireContext()).saveIfNotExist(carro)
+        }
     }
 
     private fun setupListeners() {
@@ -144,8 +147,10 @@ class CarFragment : Fragment() {
             return networkInfo.isConnected
         }
     }
+}
 
-    //Utilizar o retrofit como abastracao do AsyncTask
+
+//Utilizar o retrofit como abastracao do AsyncTask
 //
 //    private fun callService() {
 //        val urlBase = "https://igorbag.github.io/cars-api/cars.json"
@@ -216,4 +221,3 @@ class CarFragment : Fragment() {
 //        }
 //    }
 
-}

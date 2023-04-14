@@ -6,12 +6,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.electriccarapp.ui.CarFragment
 import com.example.electriccarapp.ui.FavoriteFragment
 
-class TabsAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class TabAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            1 -> CarFragment()
-            2 -> FavoriteFragment()
+            0 -> CarFragment()
+            1 -> FavoriteFragment()
             else -> CarFragment()
         }
     }

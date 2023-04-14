@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.electriccarapp.R
-import com.example.electriccarapp.ui.adapter.TabsAdapter
+import com.example.electriccarapp.ui.adapter.TabAdapter
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setuptabs() {
-        val tabsAdapter = TabsAdapter(this)
+        val tabsAdapter = TabAdapter(this)
         viewPager.adapter = tabsAdapter
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 

@@ -33,18 +33,17 @@ class FavoriteFragment : Fragment() {
 
     private fun getCarsOnLocalDb(): List<Carro> {
         val repository = CarRepository(requireContext())
-        val carList = repository.getAll()
-        return carList
+        return repository.getAll()
     }
 
 
-    fun setupView(view: View) {
+    private fun setupView(view: View) {
         view.apply {
             listaCarrosFavoritos = findViewById(R.id.rv_lista_carros_favoritos)
         }
     }
 
-    fun setupList() {
+    private fun setupList() {
         val cars = getCarsOnLocalDb()
         val carroAdapter = CarAdapter(cars, isFavoriteScreen = true)
         listaCarrosFavoritos.apply {
@@ -52,7 +51,7 @@ class FavoriteFragment : Fragment() {
             adapter = carroAdapter
         }
         carroAdapter.carItemLister = { carro ->
-            // @TODO IMPLEMENTAR O DELETE NO BANCO DE DADOS
+            CarRepository(requireContext()).deleteItem(carro)
         }
     }
 

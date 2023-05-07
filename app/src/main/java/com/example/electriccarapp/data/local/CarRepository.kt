@@ -15,7 +15,7 @@ import com.example.electriccarapp.domain.Carro
 
 class CarRepository(private val context: Context) {
 
-    fun save(carro: Carro): Boolean {
+    private fun save(carro: Carro): Boolean {
         var isSaved = false
         try {
             val dbHelper = CarsDbHelper(context)
@@ -45,7 +45,7 @@ class CarRepository(private val context: Context) {
         return isSaved
     }
 
-    fun findCarById(id: Int): Carro {
+    private fun findCarById(id: Int): Carro {
         val dbHelper = CarsDbHelper(context)
         val db = dbHelper.readableDatabase
         //Listam das columas a serem exibidas no resultado da Query
@@ -181,6 +181,35 @@ class CarRepository(private val context: Context) {
         }
         cursor.close()
         return carros
+    }
+
+    fun deleteItem(id: Carro): Boolean {
+        var isDeleted = false
+
+        try {
+            val dbHelper = CarsDbHelper(context)
+            val db = dbHelper.writableDatabase
+
+            val filter = "$COLUMN_NAME_CAR_ID = ?"
+            val filterValues = arrayOf(id.toString())
+
+
+            val deleted = db?.delete(
+                CarrosContract.CarEntry.TABLE_NAME,
+                filter,
+                filterValues
+            )
+
+            if (deleted != null && deleted > 0) {
+                isDeleted = true
+            }
+        } catch (ex: Exception) {
+            ex.message?.let {
+                Log.e("Erro ao excluir ->", it)
+            }
+        }
+        return isDeleted
+
     }
 
     companion object {

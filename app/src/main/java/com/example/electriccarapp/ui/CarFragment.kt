@@ -3,7 +3,6 @@
 package com.example.electriccarapp.ui
 
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -23,7 +22,6 @@ import com.example.electriccarapp.data.CarsApi
 import com.example.electriccarapp.data.local.CarRepository
 import com.example.electriccarapp.domain.Carro
 import com.example.electriccarapp.ui.adapter.CarAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,7 +30,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CarFragment : Fragment() {
 
-    private lateinit var fabCalcular: FloatingActionButton
     private lateinit var listaCarros: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var noInternetImage: ImageView
@@ -51,7 +48,6 @@ class CarFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRetrofit()
         setupView(view)
-        setupListeners()
     }
 
     override fun onResume() {
@@ -103,7 +99,6 @@ class CarFragment : Fragment() {
 
     private fun setupView(view: View) {
         view.apply {
-            fabCalcular = findViewById(R.id.fab_calcular)
             listaCarros = findViewById(R.id.rv_lista_carros)
             progressBar = findViewById(R.id.pb_loader)
             noInternetImage = findViewById(R.id.iv_empty_state)
@@ -118,15 +113,10 @@ class CarFragment : Fragment() {
             adapter = carroAdapter
         }
         carroAdapter.carItemLister = { carro ->
-           val isSaved = CarRepository(requireContext()).saveIfNotExist(carro)
+            CarRepository(requireContext()).saveIfNotExist(carro)
         }
     }
 
-    private fun setupListeners() {
-        fabCalcular.setOnClickListener {
-            startActivity(Intent(context, CalcularAutonomiaActivity::class.java))
-        }
-    }
 
     private fun checkForInternet(context: Context?): Boolean {
         val connectivityManager =
